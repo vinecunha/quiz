@@ -1,0 +1,169 @@
+{
+  "perguntas": [
+    {
+      "pergunta": "Qual é a linguagem de programação mais popular atualmente?",
+      "opcoes": ["Python", "JavaScript", "Java", "C++"],
+      "resposta": "JavaScript"
+    },
+    {
+      "pergunta": "O que significa a sigla API?",
+      "opcoes": ["Application Programming Interface", "Advanced Programming Interface", "Automated Programming Interface", "Application Protocol Interface"],
+      "resposta": "Application Programming Interface"
+    },
+    {
+      "pergunta": "Qual é o banco de dados mais utilizado no desenvolvimento web?",
+      "opcoes": ["MySQL", "Oracle", "MongoDB", "SQLite"],
+      "resposta": "MySQL"
+    },
+    {
+      "pergunta": "Qual linguagem de programação é conhecida por sua sintaxe simples e legibilidade?",
+      "opcoes": ["Java", "C#", "Python", "Ruby"],
+      "resposta": "Python"
+    },
+    {
+      "pergunta": "O que é Git?",
+      "opcoes": ["Uma linguagem de programação", "Um sistema operacional", "Um banco de dados", "Um sistema de controle de versão"],
+      "resposta": "Um sistema de controle de versão"
+    },
+    {
+      "pergunta": "O que é HTML?",
+      "opcoes": ["HyperText Markup Language", "High-Level Programming Language", "Home Tool Markup Language", "Hyperlink and Text Markup Language"],
+      "resposta": "HyperText Markup Language"
+    },
+    {
+      "pergunta": "Qual é a linguagem de programação mais antiga ainda em uso?",
+      "opcoes": ["C", "FORTRAN", "COBOL", "BASIC"],
+      "resposta": "FORTRAN"
+    },
+    {
+      "pergunta": "Qual é o método HTTP utilizado para criar um recurso no servidor?",
+      "opcoes": ["GET", "POST", "PUT", "DELETE"],
+      "resposta": "POST"
+    },
+    {
+      "pergunta": "O que é CSS?",
+      "opcoes": ["Cascading Style Sheets", "Central Style Sheets", "Cascading Sheet Styles", "Computer Style Sheets"],
+      "resposta": "Cascading Style Sheets"
+    },
+    {
+      "pergunta": "Qual é a linguagem de programação usada para desenvolvimento de aplicativos Android?",
+      "opcoes": ["Java", "Kotlin", "Swift", "C#"],
+      "resposta": "Kotlin"
+    },
+    {
+      "pergunta": "O que é SQL?",
+      "opcoes": ["Structured Query Language", "Simple Query Language", "Standard Query Language", "Script Query Language"],
+      "resposta": "Structured Query Language"
+    },
+    {
+      "pergunta": "Qual é o framework JavaScript mais utilizado no desenvolvimento web?",
+      "opcoes": ["Angular", "React", "Vue.js", "Ember"],
+      "resposta": "React"
+    },
+    {
+      "pergunta": "O que é JSON?",
+      "opcoes": ["JavaScript Object Notation", "Java Source Object Notation", "JavaScript Oriented Notation", "Java Structured Object Notation"],
+      "resposta": "JavaScript Object Notation"
+    },
+    {
+      "pergunta": "Qual é a linguagem de programação usada para desenvolvimento de aplicativos iOS?",
+      "opcoes": ["Swift", "Objective-C", "Java", "C++"],
+      "resposta": "Swift"
+    },
+    {
+      "pergunta": "Qual é a principal função de um servidor de banco de dados?",
+      "opcoes": ["Armazenar e gerenciar dados", "Executar cálculos matemáticos", "Processar imagens e vídeos", "Enviar e-mails"],
+      "resposta": "Armazenar e gerenciar dados"
+    },
+    {
+      "pergunta": "O que é JavaScript?",
+      "opcoes": ["Uma linguagem de programação", "Uma folha de estilo", "Um sistema operacional", "Uma biblioteca"],
+      "resposta": "Uma linguagem de programação"
+    },
+    {
+      "pergunta": "Qual é o sistema operacional mais utilizado em servidores web?",
+      "opcoes": ["Windows Server", "Linux", "MacOS", "Unix"],
+      "resposta": "Linux"
+    },
+    {
+      "pergunta": "O que é REST?",
+      "opcoes": ["Representational State Transfer", "Remote Server Technology", "RESTful Web Services", "Resourceful State Transfer"],
+      "resposta": "Representational State Transfer"
+    },
+    {
+      "pergunta": "Qual é a linguagem de programação usada para desenvolvimento de aplicativos Windows?",
+      "opcoes": ["Java", "C#", "Python", "Ruby"],
+      "resposta": "C#"
+    },
+    {
+      "pergunta": "O que é um algoritmo?",
+      "opcoes": ["Um conjunto de instruções para resolver um problema", "Um dispositivo de armazenamento", "Um tipo de dado", "Uma linguagem de programação"],
+      "resposta": "Um conjunto de instruções para resolver um problema"
+    },
+    {
+      "pergunta": "Qual é a função do comando SELECT em SQL?",
+      "opcoes": ["Inserir dados em uma tabela", "Atualizar dados em uma tabela", "Excluir dados em uma tabela", "Recuperar dados de uma tabela"],
+      "resposta": "Recuperar dados de uma tabela"
+    },
+    {
+      "pergunta": "O que é uma variável?",
+      "opcoes": ["Um valor fixo", "Um elemento de um array", "Um objeto JavaScript", "Um local de armazenamento para dados"],
+      "resposta": "Um local de armazenamento para dados"
+    },
+    {
+      "pergunta": "Qual é o método HTTP utilizado para obter dados do servidor?",
+      "opcoes": ["GET", "POST", "PUT", "DELETE"],
+      "resposta": "GET"
+    },
+    {
+      "pergunta": "O que é um framework?",
+      "opcoes": ["Um conjunto de bibliotecas e ferramentas para facilitar o desenvolvimento", "Um dispositivo de hardware", "Uma linguagem de programação", "Um banco de dados"],
+      "resposta": "Um conjunto de bibliotecas e ferramentas para facilitar o desenvolvimento"
+    },
+    {
+      "pergunta": "Qual é a linguagem de programação usada para desenvolvimento de jogos com a Unity?",
+      "opcoes": ["Python", "C#", "JavaScript", "Lua"],
+      "resposta": "C#"
+    },
+    {
+      "pergunta": "O que é um paradigma de programação?",
+      "opcoes": ["Um estilo ou abordagem para resolver problemas de programação", "Um software de edição de código", "Uma linguagem de programação", "Um protocolo de comunicação"],
+      "resposta": "Um estilo ou abordagem para resolver problemas de programação"
+    },
+    {
+      "pergunta": "Qual é a linguagem de programação usada para desenvolvimento de aplicativos desktop com a Qt?",
+      "opcoes": ["Java", "C++", "C#", "Python"],
+      "resposta": "C++"
+    },
+    {
+      "pergunta": "O que é um loop?",
+      "opcoes": ["Uma estrutura de controle que repete um bloco de código", "Uma função matemática", "Um dispositivo de entrada", "Uma classe em programação orientada a objetos"],
+      "resposta": "Uma estrutura de controle que repete um bloco de código"
+    },
+    {
+      "pergunta": "Qual é o método HTTP utilizado para atualizar um recurso no servidor?",
+      "opcoes": ["GET", "POST", "PUT", "DELETE"],
+      "resposta": "PUT"
+    },
+    {
+      "pergunta": "O que é uma classe em programação orientada a objetos?",
+      "opcoes": ["Um modelo ou plano para criar objetos", "Um bloco de código que realiza uma tarefa específica", "Um dispositivo de armazenamento", "Uma biblioteca de funções"],
+      "resposta": "Um modelo ou plano para criar objetos"
+    },
+    {
+      "pergunta": "Qual é a linguagem de programação usada para desenvolvimento de aplicativos de inteligência artificial?",
+      "opcoes": ["Python", "Java", "C++", "R"],
+      "resposta": "Python"
+    },
+    {
+      "pergunta": "O que é um servidor web?",
+      "opcoes": ["Um software que hospeda e distribui páginas da web", "Um dispositivo de rede", "Um banco de dados", "Uma linguagem de programação"],
+      "resposta": "Um software que hospeda e distribui páginas da web"
+    },
+    {
+      "pergunta": "Qual é o método HTTP utilizado para excluir um recurso no servidor?",
+      "opcoes": ["GET", "POST", "PUT", "DELETE"],
+      "resposta": "DELETE"
+    }
+  ]
+}

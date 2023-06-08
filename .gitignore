@@ -1,0 +1,15 @@
+# Arquivos de build
+build/
+dist/
+
+# Dependências instaladas via npm ou yarn
+node_modules/
+
+# Arquivos de configuração de ambiente
+.env
+
+# Arquivos de logs
+*.log
+
+# Arquivos de cache
+.cache/
