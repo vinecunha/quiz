@@ -13,32 +13,53 @@ div.resultado, div.opcoes, div.pergunta{
   align-items: flex-start;
   justify-content: flex-start;
 }
+div.resultado{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1rem;
+}
 .opcao{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  color: #2C9FBA;
 }
 h3, p{
   margin: 0;
   padding: .1rem 1rem;
+}
+.resultado h3{
+  color: #2C9FBA;
 }
 button{
   text-align: left;
   margin: .1rem .5rem .1rem 2rem;
   padding: .5rem;
   cursor: pointer;
-  border: none;
+  border: 1px solid #ccc;
   border-radius: .5rem;
-  background-color: #efefef;
+  background-color: #fff;
 }
-button:hover{
-  border-radius: .5rem;
-  background-color: #282c34;
+
+@media (hover: hover) {
+  button:not(.opcao-selecionada):hover{
+    border-radius: .5rem;
+    background-color: #2C9FBA;;
+    color: #fff;
+  }
+}
+
+button:not(.opcao-selecionada):disabled{
+  border: 1px solid #eee;
+  color: #ddd;
+}
+button.correta:disabled{
   color: #fff;
 }
+
 #restart{
   margin: 3rem 0;
+  padding: 1rem 2rem;
   border: 1px solid #d00;
   background-color: #d00;
   color: #fff;
@@ -48,12 +69,14 @@ button:hover{
   background-color: #f00;
 }
 .correta{
-  background-color: #0f0;
+  border: 1px solid #01D863;
+  background-color: #05D96B;
   color: #fff;
 }
 .incorreta{
-  background-color: #f00;
-  color: #fff;
+  border: 1px solid #FF5948;
+  background-color: #FFDFDC;
+  color: #FF5948;
 }
 
 .check::before {

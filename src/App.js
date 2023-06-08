@@ -20,7 +20,8 @@ class Quiz extends React.Component {
       respostasCorretas: 0, // Contador de respostas corretas
       respostaSelecionada: null, // Índice da pergunta com resposta selecionada
       maiorNumeroAcertos: 0, // Armazenará o maior número de acertos
-      currentDate: new Date() // Armazenará a data e hora atual
+      currentDate: new Date(), // Armazenará a data e hora atual
+      clicked: false
     };
   }
 
@@ -78,6 +79,10 @@ class Quiz extends React.Component {
     }
   };
 
+  handleClick = () => {
+    clicked(true);
+  };
+
   reiniciarQuiz = () => {
     this.setState({
       respostas: {},
@@ -114,8 +119,10 @@ class Quiz extends React.Component {
 
     return (
       <div className="quiz">
-        <h2>{this.handleSaudacao()} Seja bem-vindo(a) ao Quiz!</h2>
-        <p>{currentDate.toLocaleString()}</p>
+        <div className='header'>
+          <h2>{this.handleSaudacao()} Seja bem-vindo(a) ao Quiz!</h2>
+          <p>{currentDate.toLocaleString()}</p>
+        </div>
         <div className="resultado">
           <h3>Resultados:</h3>
           <p>Total de respostas corretas: {respostasCorretas}</p>
@@ -129,7 +136,7 @@ class Quiz extends React.Component {
             {pergunta.opcoes.map((opcao, opcaoIndex) => {
               const respostaSelecionada = respostas[index];
               const respostaCorreta = opcao === pergunta.resposta;
-              const classeBotao = respostaSelecionada === opcao ? 'opcao selecionada' : 'opcao';
+              const classeBotao = respostaSelecionada === opcao ? 'opcao-selecionada' : 'opcao';
               const classeFundo = respostaSelecionada !== undefined && respostaCorreta ? 'correta' : respostaSelecionada === opcao ? 'incorreta' : '';
               const classeSimbolo = respostaSelecionada !== undefined && respostaCorreta ? '✓' : respostaSelecionada === opcao ? 'X' : '';
             
@@ -150,9 +157,7 @@ class Quiz extends React.Component {
             </div>
             {respostaSelecionada === index && (
               <div className="resposta">
-                {respostas[index] === pergunta.resposta ? (
-                  ""
-                ) : (
+                {respostas[index] === pergunta.resposta ? "" : (
                   <p>Resposta Correta: {pergunta.resposta}</p>
                 )}
               </div>
