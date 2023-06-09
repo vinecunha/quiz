@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css'; // Estilo opcional
 
+import 'primeicons/primeicons.css';
+        
+
 // Função que embaralha um array usando o algoritmo de Fisher-Yates
 const shuffleArray = array => {
   const newArray = [...array];
@@ -21,7 +24,8 @@ class Quiz extends React.Component {
       respostaSelecionada: null, // Índice da pergunta com resposta selecionada
       maiorNumeroAcertos: 0, // Armazenará o maior número de acertos
       currentDate: new Date(), // Armazenará a data e hora atual
-      clicked: false
+      currentPerguntaIndex: 0, // Índice da pergunta atual
+      quizConcluido: false, // Indica se o quiz foi concluído
     };
   }
 
@@ -54,8 +58,8 @@ class Quiz extends React.Component {
   };
 
   handleResposta = (perguntaIndex, resposta) => {
-    const { perguntas, respostas, respostasCorretas, maiorNumeroAcertos } = this.state;
-    const perguntaAtual = perguntas[perguntaIndex];
+    const { perguntas, respostas, respostasCorretas, maiorNumeroAcertos, currentPerguntaIndex } = this.state;
+    const perguntaAtual = perguntas[currentPerguntaIndex];
 
     // Verificar se a resposta está correta e se não foi previamente respondida
     if (resposta === perguntaAtual.resposta && respostas[perguntaIndex] === undefined) {
@@ -79,8 +83,15 @@ class Quiz extends React.Component {
     }
   };
 
-  handleClick = () => {
-    clicked(true);
+  avancarPergunta = () => {
+    const { currentPerguntaIndex, perguntas } = this.state;
+    const proximaPerguntaIndex = currentPerguntaIndex + 1;
+    const isUltimaPergunta = proximaPerguntaIndex === perguntas.length;
+    this.setState({
+      respostaSelecionada: null,
+      currentPerguntaIndex: proximaPerguntaIndex,
+      quizConcluido: isUltimaPergunta,
+    });
   };
 
   reiniciarQuiz = () => {
@@ -88,6 +99,8 @@ class Quiz extends React.Component {
       respostas: {},
       respostasCorretas: 0,
       respostaSelecionada: null,
+      currentPerguntaIndex: 0,
+      quizConcluido: false,
     });
     this.carregarPerguntas(); // Chame o método carregarPerguntas para buscar novas perguntas aleatórias ao reiniciar o quiz
   };
@@ -106,70 +119,78 @@ class Quiz extends React.Component {
     }
 
     return saudacao;
-  }
+  };
 
   atualizarDataHora = () => {
     this.timerID = setInterval(() => {
       this.setState({ currentDate: new Date() });
     }, 1000);
-  }
+  };
 
   render() {
-    const { perguntas, respostas, respostasCorretas, respostaSelecionada, maiorNumeroAcertos, currentDate } = this.state;
-
+    const { perguntas, respostas, respostasCorretas, respostaSelecionada, maiorNumeroAcertos, currentDate, currentPerguntaIndex, quizConcluido } = this.state;
+    const perguntaAtual = perguntas[currentPerguntaIndex];
+    const isUltimaPergunta = currentPerguntaIndex === perguntas.length - 1;
+  
     return (
-      <div className="quiz">
-        <div className='header'>
+      <div className="container-fluid mx-auto my-3 d-flex flex-column justify-content-around align-items-center quiz">
+        <div className='header d-flex flex-column justify-content-between align-items-center mb-3'>
           <h2>{this.handleSaudacao()} Seja bem-vindo(a) ao Quiz!</h2>
-          <p>{currentDate.toLocaleString()}</p>
-        </div>
-        <div className="resultado">
-          <h3>Resultados:</h3>
-          <p>Total de respostas corretas: {respostasCorretas}</p>
-          <p>Maior número de acertos: {maiorNumeroAcertos}</p>
-        </div>
-
-        {perguntas.map((pergunta, index) => (
-          <div className="pergunta" key={index}>
-            <h3>{index+1} - {pergunta.pergunta}</h3>
-            <div className="opcoes">
-            {pergunta.opcoes.map((opcao, opcaoIndex) => {
-              const respostaSelecionada = respostas[index];
-              const respostaCorreta = opcao === pergunta.resposta;
-              const classeBotao = respostaSelecionada === opcao ? 'opcao-selecionada' : 'opcao';
-              const classeFundo = respostaSelecionada !== undefined && respostaCorreta ? 'correta' : respostaSelecionada === opcao ? 'incorreta' : '';
-              const classeSimbolo = respostaSelecionada !== undefined && respostaCorreta ? '✓' : respostaSelecionada === opcao ? 'X' : '';
-            
-              return (
-                <div className='opcao' key={opcaoIndex}>
+          <p className='d-flex flex-row align-items-center'><i className='pi pi-clock mx-1'></i>{currentDate.toLocaleString()}</p>
+        </div>        
+        {quizConcluido ? (
+          <div className="resultado d-flex flex-column align-items-center">
+            <h3>Parabéns, você completou o quiz!</h3>
+            <p>Total de respostas corretas: {respostasCorretas}</p>
+            <p>Maior número de acertos: {maiorNumeroAcertos}</p>
+            <button className='restart d-flex flex-row justify-content-start align-items-center rounded p-2' onClick={this.reiniciarQuiz}>Reiniciar Quiz</button>
+          </div>
+        ) : (
+          ""
+        )}
+        {!quizConcluido && perguntaAtual && (
+          <div className='container-fluid border border-1 pb-5 shadow-sm rounded'>
+          <div className="pergunta w-100 mt-3">
+            <h3>{currentPerguntaIndex + 1} - {perguntaAtual.pergunta}</h3>
+            <div className="opcoes text-start">
+              {perguntaAtual.opcoes.map((opcao, opcaoIndex) => {
+                const respostaSelecionada = respostas[currentPerguntaIndex];
+                const respostaCorreta = opcao === perguntaAtual.resposta;
+                const classeBotao = respostaSelecionada === opcao ? 'opcao-selecionada d-flex flex-row justify-content-start align-items-center rounded m-1 p-2' : 'opcao d-flex flex-row justify-content-start align-items-center rounded m-1 p-2';
+                const classeFundo = respostaSelecionada !== undefined && respostaCorreta ? 'correta d-flex flex-row justify-content-start align-items-center rounded m-1' : respostaSelecionada === opcao ? 'incorreta d-flex flex-row justify-content-start align-items-center rounded m-1' : '';
+                const classeSimbolo = respostaSelecionada !== undefined && respostaCorreta ? '✓' : respostaSelecionada === opcao ? 'X' : '';
+  
+                return (
+                  <div className='opcao d-flex flex-row justify-content-start align-items-center' key={opcaoIndex}>
                     <button
-                      onClick={() => this.handleResposta(index, opcao)}
-                      className={`${classeBotao} ${classeFundo}`}
+                      onClick={() => this.handleResposta(currentPerguntaIndex, opcao)}
+                      className={`${classeBotao} ${classeFundo} text-start`}
                       disabled={respostaSelecionada !== undefined} // Desabilitar botões de resposta já selecionados
                     >
                       {(opcaoIndex === 0) ? 'A' : (opcaoIndex === 1) ? 'B' : (opcaoIndex === 2) ? 'C' : 'D'} - {opcao}
                     </button>
-                    {respostaSelecionada === opcao && respostaCorreta && <span className="check"></span>}
-                    {respostaSelecionada === opcao && !respostaCorreta && <span className="x"></span>}
+                    {respostaSelecionada === opcao && respostaCorreta && <span className="check"><i className='pi pi-check'></i></span>}
+                    {respostaSelecionada === opcao && !respostaCorreta && <span className="x"><i className='pi pi-times'></i></span>}
                   </div>
                 );
               })}
             </div>
-            {respostaSelecionada === index && (
-              <div className="resposta">
-                {respostas[index] === pergunta.resposta ? "" : (
-                  <p>Resposta Correta: {pergunta.resposta}</p>
-                )}
-              </div>
+          </div>
+          </div>
+        )}
+  
+        {respostaSelecionada !== null && (
+          <div className="botoes">
+            {isUltimaPergunta ? (
+              <button className='restart finish d-flex flex-row justify-content-start align-items-center rounded mt-3 p-2' onClick={this.avancarPergunta}>Finalizar Quiz</button>
+            ) : (
+              <button className='next d-flex flex-row justify-content-start align-items-center rounded mt-3 p-2' onClick={this.avancarPergunta}>Próxima pergunta</button>
             )}
           </div>
-        ))}
-        <button id="restart" onClick={this.reiniciarQuiz}>
-          Reiniciar
-        </button>
+        )}
       </div>
     );
-  }
+  }  
 }
 
 export default Quiz;
