@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css'; // Estilo opcional
-
 import 'primeicons/primeicons.css';
-        
 
 // Função que embaralha um array usando o algoritmo de Fisher-Yates
 const shuffleArray = array => {
@@ -139,20 +137,20 @@ class Quiz extends React.Component {
           <p className='d-flex flex-row align-items-center'><i className='pi pi-clock mx-1'></i>{currentDate.toLocaleString()}</p>
         </div>        
         {quizConcluido ? (
-          <div className="resultado d-flex flex-column align-items-center">
+          <div className="resultado mt-3 d-flex flex-column align-items-center">
             <h3>Parabéns, você completou o quiz!</h3>
             <p>Total de respostas corretas: {respostasCorretas}</p>
             <p>Maior número de acertos: {maiorNumeroAcertos}</p>
-            <button className='restart d-flex flex-row justify-content-start align-items-center rounded p-2' onClick={this.reiniciarQuiz}>Reiniciar Quiz</button>
+            <button className='restart d-flex flex-row justify-content-start align-items-center rounded p-2' onClick={this.reiniciarQuiz}>Reiniciar Quiz <i className="pi pi-replay mx-1"></i></button>
           </div>
         ) : (
           ""
         )}
         {!quizConcluido && perguntaAtual && (
-          <div className='container-fluid border border-1 pb-5 shadow-sm rounded'>
+          <div className='container-fluid questions border border-1 pb-5 shadow-sm rounded'>
           <div className="pergunta w-100 mt-3">
             <h3>{currentPerguntaIndex + 1} - {perguntaAtual.pergunta}</h3>
-            <div className="opcoes text-start">
+            <div className="opcoes p-ripple text-secondary text-start">
               {perguntaAtual.opcoes.map((opcao, opcaoIndex) => {
                 const respostaSelecionada = respostas[currentPerguntaIndex];
                 const respostaCorreta = opcao === perguntaAtual.resposta;
@@ -180,11 +178,11 @@ class Quiz extends React.Component {
         )}
   
         {respostaSelecionada !== null && (
-          <div className="botoes">
+          <div className="botoes my-3 d-flex flex-row justify-content-between align-items-center">
             {isUltimaPergunta ? (
-              <button className='restart finish d-flex flex-row justify-content-start align-items-center rounded mt-3 p-2' onClick={this.avancarPergunta}>Finalizar Quiz</button>
+              <button className='restart finish align-items-center rounded p-2' onClick={this.avancarPergunta}>Finalizar Quiz <i className="pi pi-power-off mx-1"></i></button>
             ) : (
-              <button className='next d-flex flex-row justify-content-start align-items-center rounded mt-3 p-2' onClick={this.avancarPergunta}>Próxima pergunta</button>
+              <button className='next d-flex align-items-center rounded p-2' onClick={this.avancarPergunta}>Próxima pergunta <i className="pi pi-angle-double-right mx-1"></i></button>
             )}
           </div>
         )}

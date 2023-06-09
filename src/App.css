@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 :root{
+  --body-color: #efefef;
   --border: #ccc;
   --bg-color: #fff;
   --primary: #2C9FBA;
@@ -14,7 +17,12 @@
   --bg-color-incorreta: #FFDFDC;
 }
 body{
-  background-color: #fff;
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif !important;
+  background: linear-gradient(to bottom right, var(--bg-color), var(--body-color)) !important;
+}
+.questions{
+  background-color: var(--bg-color);
 }
 .resultado h3{
   color: #2C9FBA;
@@ -26,12 +34,12 @@ button{
 }
 
 @media (hover: hover) {
-  button:not(.opcao-selecionada):hover{
+  button:not(.opcao-selecionada,.restart,.finish):hover{
     border-radius: .5rem;
     background-color: var(--primary);
     color: var(--font-color);
   }
-  button.restart:hover{
+  button.finish:hover{
     background-color: var(var(--red-color-hover));
   }
   button.next:hover{
@@ -45,7 +53,6 @@ button:not(.opcao-selecionada):disabled{
 button.correta:disabled{
   color: var(--font-color);
 }
-
 .restart{
   border: 1px solid var(--red-color);
   background-color: var(--red-color);
