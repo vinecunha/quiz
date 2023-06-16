@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css'; // Estilo opcional
 import 'primeicons/primeicons.css';
-
+        
 // Função que embaralha um array usando o algoritmo de Fisher-Yates
 const shuffleArray = array => {
   const newArray = [...array];
@@ -103,22 +103,6 @@ class Quiz extends React.Component {
     this.carregarPerguntas(); // Chame o método carregarPerguntas para buscar novas perguntas aleatórias ao reiniciar o quiz
   };
 
-  handleSaudacao = () => {
-    const currentHour = new Date().getHours();
-
-    let saudacao;
-
-    if (currentHour >= 5 && currentHour < 12) {
-      saudacao = "Bom dia!";
-    } else if (currentHour >= 12 && currentHour < 18) {
-      saudacao = "Boa tarde!";
-    } else {
-      saudacao = "Boa noite!";
-    }
-
-    return saudacao;
-  };
-
   atualizarDataHora = () => {
     this.timerID = setInterval(() => {
       this.setState({ currentDate: new Date() });
@@ -129,13 +113,17 @@ class Quiz extends React.Component {
     const { perguntas, respostas, respostasCorretas, respostaSelecionada, maiorNumeroAcertos, currentDate, currentPerguntaIndex, quizConcluido } = this.state;
     const perguntaAtual = perguntas[currentPerguntaIndex];
     const isUltimaPergunta = currentPerguntaIndex === perguntas.length - 1;
+    const progresso = (currentPerguntaIndex + 1) / perguntas.length * 100;
   
     return (
       <div className="container-fluid mx-auto my-3 d-flex flex-column justify-content-around align-items-center quiz">
         <div className='header d-flex flex-column justify-content-between align-items-center mb-3'>
-          <h2>{this.handleSaudacao()} Seja bem-vindo(a) ao Quiz!</h2>
+          <h2 className='text-center d-flex justify-content-center align-items-center'>Seja bem-vindo(a) ao <img className='ms-1' src='/data/images.png' alt="Imagem" width={'70px'}/></h2>
           <p className='d-flex flex-row align-items-center'><i className='pi pi-clock mx-1'></i>{currentDate.toLocaleString()}</p>
-        </div>        
+        </div>   
+        <div className="progress-bar">
+          <p className="progresso my-3 rounded">Pergunta <strong>{currentPerguntaIndex + 1}</strong> de {perguntas.length}</p>
+        </div>
         {quizConcluido ? (
           <div className="resultado mt-3 d-flex flex-column align-items-center">
             <h3>Parabéns, você completou o quiz!</h3>
@@ -147,9 +135,9 @@ class Quiz extends React.Component {
           ""
         )}
         {!quizConcluido && perguntaAtual && (
-          <div className='container-fluid questions border border-1 pb-5 shadow-sm rounded'>
-          <div className="pergunta w-100 mt-3">
-            <h3>{currentPerguntaIndex + 1} - {perguntaAtual.pergunta}</h3>
+          <div className='container-sm questions border border-1 pb-5 shadow-sm rounded'>
+          <div className="w-100 mt-3">
+            <h3 className='pergunta p-2'>{currentPerguntaIndex + 1} - {perguntaAtual.pergunta}</h3>
             <div className="opcoes p-ripple text-secondary text-start">
               {perguntaAtual.opcoes.map((opcao, opcaoIndex) => {
                 const respostaSelecionada = respostas[currentPerguntaIndex];

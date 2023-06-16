@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root{
-  --body-color: #efefef;
+  --body-color: #8aaaec;
+  --body-color-2: #3676ec;
   --border: #ccc;
   --bg-color: #fff;
   --primary: #2C9FBA;
   --font-color: #fff;
   --font-color-disabled: #ddd;
-  --border-color-disabled: #eee;
+  --border-color-disabled: #eeeeee55;
   --red-color: #d00;
   --red-color-hover: #f00;
   --incorreta: #FF5948;
@@ -18,14 +19,20 @@
 }
 body{
   min-height: 100vh;
-  font-family: 'Open Sans', sans-serif !important;
-  background: linear-gradient(to bottom right, var(--bg-color), var(--body-color)) !important;
+  font-family: 'Poppins', sans-serif !important;
+  background: linear-gradient(to bottom right, var(--body-color), var(--body-color-2)) !important;
+}
+.header,.resultado,.progresso{
+  color: var(--font-color);
 }
 .questions{
   background-color: var(--bg-color);
 }
+.pergunta{
+  background-color: var(--border-color-disabled, 50%);
+}
 .resultado h3{
-  color: #2C9FBA;
+  color: var(--font-color);
 }
 button{
   cursor: pointer;
