@@ -121,9 +121,6 @@ class Quiz extends React.Component {
           <h2 className='text-center d-flex justify-content-center align-items-center'>Seja bem-vindo(a) ao <img className='ms-1' src='/data/images.png' alt="Imagem" width={'70px'}/></h2>
           <p className='d-flex flex-row align-items-center'><i className='pi pi-clock mx-1'></i>{currentDate.toLocaleString()}</p>
         </div>   
-        <div className="progress-bar">
-          <p className="progresso my-3 rounded">Pergunta <strong>{currentPerguntaIndex + 1}</strong> de {perguntas.length}</p>
-        </div>
         {quizConcluido ? (
           <div className="resultado mt-3 d-flex flex-column align-items-center">
             <h3>Parabéns, você completou o quiz!</h3>
@@ -136,6 +133,7 @@ class Quiz extends React.Component {
         )}
         {!quizConcluido && perguntaAtual && (
           <div className='container-sm questions border border-1 pb-5 shadow-sm rounded'>
+          <p className="progresso text-dark text-center my-3 rounded">Pergunta <strong>{currentPerguntaIndex + 1}</strong> de {perguntas.length}</p>
           <div className="w-100 mt-3">
             <h3 className='pergunta p-2'>{currentPerguntaIndex + 1} - {perguntaAtual.pergunta}</h3>
             <div className="opcoes p-ripple text-secondary text-start">
